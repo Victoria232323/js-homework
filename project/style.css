@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Source+Code+Pro&display=swap');
+
+h1{
+    font-family: 'Righteous';
+}
+
+h3{
+    font-family: 'Source Code Pro', monospace;
+}
+
+h2{
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 600;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #f8f2fc;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: column;
+}
+
+button{
+    background-color: blueviolet;
+}
+
+.target{
+    height: 10%;
+    width: 10%;
+}
+
+.title{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.live{
+    height: 5%;
+    width: 5%;
+}
+
+#titleImg{
+    height: 5%;
+    width: 5%;
+}
+
+.lives{
+    display: flex;
+    justify-content: flex-start;
+}
