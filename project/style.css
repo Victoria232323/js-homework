@@ -41,17 +41,24 @@ button{
     justify-content: center;
 }
 
-.live{
-    height: 5%;
-    width: 5%;
-}
-
 #titleImg{
     height: 5%;
     width: 5%;
 }
 
 .lives{
+    
+    height: 5%;
+    width: 5%;
+}
+
+.myLives{
     display: flex;
     justify-content: flex-start;
+    flex-direction: row;
+}
+
+.game{
+    position: absolute;
+    overflow: hidden;
 }
