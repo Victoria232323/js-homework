@@ -30,8 +30,8 @@ button{
 }
 
 .target{
-    height: 10%;
-    width: 10%;
+    height: 5%;
+    width: 5%;
 }
 
 .title{
@@ -47,9 +47,8 @@ button{
 }
 
 .lives{
-    
-    height: 5%;
-    width: 5%;
+    height: 3%;
+    width: 3%;
 }
 
 .myLives{
@@ -59,6 +58,15 @@ button{
 }
 
 .game{
-    position: absolute;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.odd{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.empty{
+    height: 50px;
 }
