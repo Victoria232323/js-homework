@@ -30,9 +30,11 @@ hard.addEventListener('click', () =>{
 });
 
 const res = document.querySelector('#res');
-function win(){
+const cookieValue = document.cookie.split('; ').find(row => row.startsWith('value='));
+const result = cookieValue ? decodeURIComponent(cookieValue.split('=')[1]) : null;
+if (result === 'win'){
     res.innerHTML += '<h2>You won!</h2>';
 }
-function loose(){
+if (result === 'loose'){
     res.innerHTML += '<h2>Try again!</h2>';
 }
