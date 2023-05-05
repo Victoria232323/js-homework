@@ -6,7 +6,6 @@ function setTargets(targets){
     for (let i = 0; i < targets; i++) {
         allTargets.innerHTML += '<div class = "targetDiv"><img src="img/target.png" class="target"><div>';
     }
-    
 }
 
 function moveTargets(speed){
@@ -49,6 +48,7 @@ function setTimer(){
 
         if (countdown < 0) {
             clearInterval(timerId); 
+            loose(); // Вызываем функцию loose(), когда таймер достигает 0
             return false;
         }
     }
@@ -57,23 +57,24 @@ function setTimer(){
 }
 
 function loose(){
+    console.log('loose');
     const value = 'loose';
     document.cookie = `value=${encodeURIComponent(value)}`;
-    location.href = 'index.html';
+    window.history.back();
 }
 
 function win(){
+    console.log('win');
     const value = 'win';
     document.cookie = `value=${encodeURIComponent(value)}`;
-    location.href = 'index.html';
+    window.history.back();
 }
 
 function game(targets, lives, speed){
     setLives(lives);
     setTargets(targets);
-    let time = setTimer();
+    setTimer();
     moveTargets(speed);
-
     const allTargets = document.querySelectorAll('.target');
     let points = 0; 
     
@@ -82,6 +83,11 @@ function game(targets, lives, speed){
             event.preventDefault(); 
             event.stopPropagation();
             points++; 
+
+            if (points >= targets) { 
+                win();
+            }
+
             const emptyDiv = document.createElement('div');
             emptyDiv.className = 'empty'; 
             event.target.parentNode.replaceChild(emptyDiv, event.target);
@@ -90,31 +96,23 @@ function game(targets, lives, speed){
 
     const field = document.querySelector('.game');
     const allLives = document.querySelectorAll('.lives');
-    const myLives = document.querySelector('.myLives');
-    
+
     field.addEventListener('click', () => {
         if (lives > 0 && allLives.length > 0) { 
             lives--; 
             document.querySelector('.lives').remove();
         }
-    });
 
-    const timer = document.querySelector('.timer');
-    timer.addEventListener('change', () => {
-        if (time === false) {
+        if (lives === 0) {
             loose();
         }
-    });
-    
-    myLives.addEventListener('change', () => {
-        loose();
     });
 }
 
 if(difficulty === 'easy'){
     game(3, 5, 0.7);
 } else if(difficulty === 'normal'){
-    game(4, 3, 0.8);
+    game(4, 4, 0.8);
 } else{
     game(5, 3, 0.9);
 }
