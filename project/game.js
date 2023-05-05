@@ -57,17 +57,11 @@ function setTimer(){
 }
 
 function loose(){
-    console.log('loose');
-    const value = 'loose';
-    document.cookie = `value=${encodeURIComponent(value)}`;
-    window.history.back();
+    location.assign('loose.html');
 }
 
 function win(){
-    console.log('win');
-    const value = 'win';
-    document.cookie = `value=${encodeURIComponent(value)}`;
-    window.history.back();
+    location.assign('win.html');
 }
 
 function game(targets, lives, speed){
